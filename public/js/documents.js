@@ -31,14 +31,74 @@ function addDocument() {
 
 }
 
-function editDocument(id) {
-    alert('Modifier le document #' + id);
-}
-
 function downloadDocument(id) {
     alert('Télécharger le document #' + id);
    
 }
+
+function openEditDocumentModal(data) {
+    const modal = document.getElementById('editDocumentModal');
+    if (!modal) {
+        return;
+    }
+
+    const idInput = document.getElementById('editDocumentId');
+    const statutInput = document.getElementById('editStatutInput');
+    const etablissementInput = document.getElementById('editEtablissementInput');
+    const gradeInput = document.getElementById('editGradeInput');
+    const documentNameInput = document.getElementById('editDocumentNameInput');
+    const fileInput = document.getElementById('editDocumentFileInput');
+
+    if (idInput) idInput.value = data.id || '';
+    if (statutInput) statutInput.value = data.statut || '';
+    if (etablissementInput) etablissementInput.value = data.etablissement || '';
+    if (gradeInput) gradeInput.value = data.grade || '';
+    if (documentNameInput) documentNameInput.value = data.document || '';
+    if (fileInput) fileInput.value = '';
+
+    modal.classList.add('show');
+}
+
+function closeEditDocumentModal() {
+    const modal = document.getElementById('editDocumentModal');
+    if (modal) {
+        modal.classList.remove('show');
+    }
+}
+
+function closeModalOnOutside(event, modalId) {
+    if (event.target.id === modalId) {
+        if (modalId === 'editDocumentModal') {
+            closeEditDocumentModal();
+        } else if (modalId === 'addDocumentModal') {
+            closeAddDocumentModal();
+        }
+    }
+}
+
+function editDocument(id, button) {
+    const row = button ? button.closest('tr') : null;
+    const cells = row ? row.querySelectorAll('td') : [];
+    const getCellText = (index) => (cells[index] ? cells[index].textContent.trim() : '');
+
+    openEditDocumentModal({
+        id,
+        statut: getCellText(1),
+        etablissement: getCellText(2),
+        grade: getCellText(3),
+        document: getCellText(4)
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const editForm = document.getElementById('editDocumentForm');
+    if (editForm) {
+        editForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            closeEditDocumentModal();
+        });
+    }
+});
 
 document.addEventListener('click', function(event) {
     const modal = document.getElementById('addDocumentModal');

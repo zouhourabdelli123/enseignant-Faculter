@@ -39,7 +39,7 @@
                     <td>chadi8iik</td>
                     <td>
                         <button class="btn-outline" style="margin-right: 0.5rem; border-color: #10b981; color: #10b981;"
-                            onclick="editDocument(1)">
+                            onclick="editDocument(1, this)">
                             <i class="fas fa-edit"></i>
                             Modifier
                         </button>
@@ -57,7 +57,7 @@
                     <td>diplome_licence.pdf</td>
                     <td>
                         <button class="btn-outline" style="margin-right: 0.5rem; border-color: #10b981; color: #10b981;"
-                            onclick="editDocument(2)">
+                            onclick="editDocument(2, this)">
                             <i class="fas fa-edit"></i>
                             Modifier
                         </button>
@@ -75,7 +75,7 @@
                     <td>attestation_travail.pdf</td>
                     <td>
                         <button class="btn-outline" style="margin-right: 0.5rem; border-color: #10b981; color: #10b981;"
-                            onclick="editDocument(3)">
+                            onclick="editDocument(3, this)">
                             <i class="fas fa-edit"></i>
                             Modifier
                         </button>
@@ -90,51 +90,69 @@
     </div>
 </div>
 
-<!-- MODAL AJOUTER DOCUMENT -->
-<div id="addDocumentModal"
-    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
-    <div
-        style="background: white; border-radius: 16px; padding: 2rem; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;">
-        <h3 style="margin: 0 0 1.5rem 0; color: #0c5eb1;">Ajouter un Document</h3>
+<div id="editDocumentModal" class="modal-overlay" onclick="closeModalOnOutside(event, 'editDocumentModal')">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeEditDocumentModal()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+        </button>
 
-        <div style="margin-bottom: 1rem;">
-            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a202c;">Statut</label>
-            <input type="text" id="statutInput" class="note-input" style="width: 100%;"
-                placeholder="CV, Diplôme, Attestation...">
-        </div>
-
-        <div style="margin-bottom: 1rem;">
-            <label
-                style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a202c;">Établissement</label>
-            <input type="text" id="etablissementInput" class="note-input" style="width: 100%;"
-                placeholder="Universitaire, Professionnel...">
-        </div>
-
-        <div style="margin-bottom: 1rem;">
-            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a202c;">Grade</label>
-            <input type="text" id="gradeInput" class="note-input" style="width: 100%;"
-                placeholder="IIT, Licence, Master...">
-        </div>
-
-        <div style="margin-bottom: 1.5rem;">
-            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1a202c;">Fichier</label>
-            <input type="file" id="fileInput"
-                style="width: 100%; padding: 0.625rem; border: 2px solid #e2e8f0; border-radius: 10px;">
-        </div>
-
-        <div style="display: flex; gap: 1rem; justify-content: flex-end;">
-            <button class="btn btn-secondary" onclick="closeAddDocumentModal()">Annuler</button>
-            <button class="btn btn-primary" onclick="addDocument()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" />
-                    <polyline points="17 21 17 13 7 13 7 21" />
-                    <polyline points="7 3 7 8 15 8" />
+        <div class="modal-header">
+            <div class="modal-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 20h9" />
+                    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
                 </svg>
-                Enregistrer
-            </button>
+            </div>
+            <h3 class="modal-title">Modifier le document</h3>
+            <p class="modal-subtitle">Mettez a jour les informations du document</p>
+        </div>
+
+        <form id="editDocumentForm" class="modal-form">
+            <input type="hidden" id="editDocumentId">
+            <div class="form-group">
+                <label class="form-label" for="editStatutInput">Statut</label>
+                <select id="editStatutInput" class="form-select" required>
+                    <option value="">Selectionner un type</option>
+                    <option value="CV">CV</option>
+                    <option value="Diplome">Diplome</option>
+                    <option value="Attestation">Attestation</option>
+                    <option value="Certificat">Certificat</option>
+                    <option value="Releve de notes">Releve de notes</option>
+                    <option value="Lettre de motivation">Lettre de motivation</option>
+                    <option value="Autre">Autre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="editEtablissementInput">Etablissement</label>
+                <input type="text" id="editEtablissementInput" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="editGradeInput">Grade</label>
+                <input type="text" id="editGradeInput" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="editDocumentNameInput">Document</label>
+                <input type="text" id="editDocumentNameInput" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="editDocumentFileInput">Nouveau fichier (optionnel)</label>
+                <input type="file" id="editDocumentFileInput" class="form-input"
+                    accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+            </div>
+        </form>
+
+        <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" onclick="closeEditDocumentModal()">Annuler</button>
+            <button type="submit" form="editDocumentForm" class="btn btn-primary">Enregistrer</button>
         </div>
     </div>
 </div>
+
+
 
 <script src="{{ asset('js/documents.js') }}"></script>
 
