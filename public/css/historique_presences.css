@@ -1,0 +1,73 @@
+/* ====================================
+   HISTORIQUE DES PRÉSENCES - MODAL
+   ==================================== */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.modal-group {
+    margin-bottom: 1.5rem;
+}
+
+.modal-label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: #1a202c;
+    font-size: 0.95rem;
+}
+
+.modal-select {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    background: #f7fafc;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-select:focus {
+    outline: none;
+    border-color: #0c5eb1;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(12, 94, 177, 0.1);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.hidden {
+    display: none !important;
+}

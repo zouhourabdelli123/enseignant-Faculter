@@ -29,6 +29,8 @@ route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/message', [AbsenceController::class, 'message'])->name('message.index');
     Route::get('/documents', [AbsenceController::class, 'documents'])->name('documents.index');
     Route::get('/documents/add', [AbsenceController::class, 'add_document'])->name('documents.add');
+    Route::get('/historique-presences', [AbsenceController::class, 'historique_presences'])->name('historique_presences.index');
+    Route::get('/afficher-presences-etudiants/{id}', [AbsenceController::class, 'afficher_presences_etudiants'])->name('afficher_presences_etudiants');
 
 });
 require __DIR__ . '/auth.php';

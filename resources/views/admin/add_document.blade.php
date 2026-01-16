@@ -5,7 +5,6 @@
     <link href="{{ asset('css/add_document.css') }}" rel="stylesheet">
 
     <div class="page-container">
-        <!-- HEADER -->
         <div class="header-section">
             <div class="header-text">
                 <h2 class="page-title">Liste des documents</h2>
@@ -13,7 +12,8 @@
             </div>
         </div>
 
-        <!-- FORMULAIRE -->
+        
+
         <div class="form-section">
             <form id="addDocumentForm" enctype="multipart/form-data">
                 @csrf

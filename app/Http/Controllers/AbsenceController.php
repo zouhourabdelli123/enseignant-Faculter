@@ -45,4 +45,15 @@ class AbsenceController extends Controller
     {
         return view('admin.add_document');
     }
+
+    public function historique_presences()
+    {
+        return view('admin.historique_presences');
+    }
+
+    public function afficher_presences_etudiants($id)
+    {
+        // TODO: Récupérer les données réelles depuis la base de données
+        return view('admin.afficher_presences_etudiants', compact('id'));
+    }
 }

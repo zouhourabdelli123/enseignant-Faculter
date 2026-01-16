@@ -26,6 +26,14 @@
 
         <ul class="nav-links">
             <li>
+                <a
+                    class="{{ request()->routeIs('dashboard.*') ? 'active' : '' }}">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li>
                 <a href="{{ route('absences.index') }}" class="{{ request()->routeIs('absences.*') ? 'active' : '' }}">
                     <i class="fas fa-user-clock"></i>
                     <span>Gestion des Absences</span>
@@ -59,7 +67,13 @@
         <p class="nav-title">Gestion</p>
 
         <ul class="nav-links">
-            <li><a href="#"><i class="fas fa-chart-line"></i> Évaluations</a></li>
+            <li>
+                <a href="{{ route('index_notes.index') }}"
+                    class="{{ request()->routeIs('index_notes.*') ? 'active' : '' }}">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Évaluations</span>
+                </a>
+            </li>
             <li>
                 <a href="{{ route('message.index') }}" class="{{ request()->routeIs('message.*') ? 'active' : '' }}">
                     <i class="fas fa-comment-dots"></i>
@@ -71,6 +85,13 @@
                     class="{{ request()->routeIs('documents.*') ? 'active' : '' }}">
                     <i class="fas fa-folder-open"></i>
                     <span>Documents</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('historique_presences.index') }}"
+                    class="{{ request()->routeIs('historique_presences.*') ? 'active' : '' }}">
+                    <i class="fas fa-history"></i>
+                    <span>Historique Présences</span>
                 </a>
             </li>
             <li><a href="#"><i class="fas fa-sliders-h"></i> Paramètres</a></li>
