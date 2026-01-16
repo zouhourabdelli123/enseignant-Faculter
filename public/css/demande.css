@@ -1,5 +1,39 @@
 
-       /* FORM CARD */
+
+
+.page-title {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0c5eb1;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.5px;
+}
+
+.page-subtitle {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.header-text {
+    flex: 1;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.025em;
+}
+
+.page-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
         .form-card {
             background: var(--surface);
             border-radius: var(--radius-lg);

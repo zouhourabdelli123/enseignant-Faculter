@@ -24,7 +24,7 @@
 
         <ul class="nav-links">
             <li>
-                <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard.*') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard*') ? 'active' : '' }}">
                     <i class="fas fa-home"></i>
                     <span>Dashboard</span>
                 </a>

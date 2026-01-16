@@ -195,6 +195,13 @@
             const sidebar = document.getElementById('sidebar');
             const menuToggle = document.getElementById('menuToggle');
             
+            if (window.innerWidth <= 1024 && sidebar) {
+                sidebar.classList.add('active');
+                if (menuToggle) {
+                    menuToggle.classList.add('active');
+                }
+            }
+            
             // Fonction pour toggler la sidebar
             function toggleSidebar() {
                 sidebar.classList.toggle('active');
