@@ -1689,3 +1689,302 @@
                 display: none;
             }
         }
+
+        /* ====================================
+           SIDEBAR AMÉLIORATIONS MODERNES
+           ==================================== */
+        
+        /* Logo amélioré */
+        .sidebar-logo-icon {
+            background: linear-gradient(135deg, #0a4b8f, #0c5eb1, #3e7eb3) !important;
+            box-shadow: 0 4px 15px rgba(12, 94, 177, 0.3) !important;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .sidebar-logo-text h2 {
+            background: linear-gradient(135deg, #0a4b8f, #0c5eb1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Status amélioré */
+        .teacher-status {
+            background: linear-gradient(135deg, #e6f2ff, #f0f8ff) !important;
+            border: 1px solid rgba(12, 94, 177, 0.2) !important;
+            box-shadow: 0 2px 8px rgba(12, 94, 177, 0.05);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .status-text {
+            flex: 1;
+        }
+
+        .status-text span {
+            display: block;
+            font-weight: 600;
+            color: #0a4b8f;
+            font-size: 0.9rem;
+        }
+
+        .status-text small {
+            color: #64748b;
+            font-size: 0.75rem;
+        }
+
+        /* Nav titles */
+        .nav-title {
+            position: relative;
+            padding-left: 2.5rem !important;
+        }
+
+        .nav-title::before {
+            content: '';
+            position: absolute;
+            left: 1.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 12px;
+            background: linear-gradient(135deg, #0c5eb1, #3e7eb3);
+            border-radius: 2px;
+        }
+
+        /* Nav links improvements */
+        .nav-links a {
+            border-radius: 0 12px 12px 0;
+            margin: 0 0.5rem 0.3rem 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            background: linear-gradient(90deg, rgba(12, 94, 177, 0.08), rgba(12, 94, 177, 0.15)) !important;
+            transform: translateX(5px);
+        }
+
+        .nav-links a.active {
+            background: linear-gradient(90deg, rgba(12, 94, 177, 0.12), rgba(12, 94, 177, 0.08)) !important;
+            color: #0a4b8f !important;
+            font-weight: 600;
+            box-shadow: inset 0 1px 3px rgba(12, 94, 177, 0.1);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: #0c5eb1;
+            border-radius: 50%;
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Icons improvements */
+        .nav-links i {
+            background: linear-gradient(135deg, rgba(12, 94, 177, 0.1), rgba(62, 126, 179, 0.1));
+            border-radius: 8px;
+            padding: 0.4rem;
+            width: 32px !important;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links a.active i {
+            background: linear-gradient(135deg, #0c5eb1, #3e7eb3);
+            color: white !important;
+            box-shadow: 0 2px 8px rgba(12, 94, 177, 0.3);
+        }
+
+        .nav-links a:hover i {
+            background: linear-gradient(135deg, rgba(12, 94, 177, 0.2), rgba(62, 126, 179, 0.2));
+        }
+
+        /* Footer amélioré */
+        .sidebar-footer {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff) !important;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar-footer:hover {
+            background: linear-gradient(135deg, #e6f2ff, #f0f8ff) !important;
+            border-color: rgba(12, 94, 177, 0.2);
+            box-shadow: 0 4px 15px rgba(12, 94, 177, 0.1);
+        }
+
+        /* Scrollbar personnalisée */
+        .nav-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .nav-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .nav-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #cbd5e0, #a0aec0);
+            border-radius: 3px;
+        }
+
+        .nav-container::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #0c5eb1, #3e7eb3);
+        }
+
+        /* ====================================
+           USER DROPDOWN MENU
+           ==================================== */
+        
+        .user-profile {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: calc(100% + 1rem);
+            right: 0;
+            width: 280px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--light-gray);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+
+        .user-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, #e6f2ff, #f0f8ff);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .dropdown-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0c5eb1, #3e7eb3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(12, 94, 177, 0.3);
+        }
+
+        .dropdown-name {
+            font-weight: 600;
+            color: #1a202c;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-email {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin: 0.25rem 0 0 0;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: var(--light-gray);
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+            padding: 0.875rem 1.25rem;
+            color: #4a5568;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item:hover {
+            background: #f7fafc;
+            color: #0c5eb1;
+            padding-left: 1.5rem;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            font-size: 1rem;
+            color: #64748b;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover i {
+            color: #0c5eb1;
+            transform: scale(1.1);
+        }
+
+        .logout-item {
+            color: #dc3545;
+        }
+
+        .logout-item:hover {
+            background: #fff5f5;
+            color: #dc3545;
+        }
+
+        .logout-item i {
+            color: #dc3545;
+        }
+
+        .logout-item:hover i {
+            color: #dc3545;
+            transform: scale(1.1) rotate(-10deg);
+        }
+
+        /* Animation de la flèche */
+        .user-profile:hover .fa-chevron-down {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }

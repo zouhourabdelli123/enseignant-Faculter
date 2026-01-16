@@ -1,5 +1,4 @@
 <aside class="sidebar" id="sidebar">
-    <!-- HEADER -->
     <div class="sidebar-header">
         <div class="sidebar-logo">
             <div class="sidebar-logo-icon">
@@ -7,7 +6,6 @@
             </div>
             <div class="sidebar-logo-text">
                 <h2>IIT Enseignant</h2>
-                <p>Version 3.0</p>
             </div>
         </div>
 
@@ -26,8 +24,7 @@
 
         <ul class="nav-links">
             <li>
-                <a
-                    class="{{ request()->routeIs('dashboard.*') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard.*') ? 'active' : '' }}">
                     <i class="fas fa-home"></i>
                     <span>Dashboard</span>
                 </a>
@@ -67,13 +64,7 @@
         <p class="nav-title">Gestion</p>
 
         <ul class="nav-links">
-            <li>
-                <a href="{{ route('index_notes.index') }}"
-                    class="{{ request()->routeIs('index_notes.*') ? 'active' : '' }}">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Évaluations</span>
-                </a>
-            </li>
+     
             <li>
                 <a href="{{ route('message.index') }}" class="{{ request()->routeIs('message.*') ? 'active' : '' }}">
                     <i class="fas fa-comment-dots"></i>
