@@ -5,12 +5,7 @@
     <link href="{{ asset('css/message.css') }}" rel="stylesheet">
 
     <div class="page-container">
-        <div class="header-section">
-            @include('components.page-header', [
-                'title' => 'Messages',
-                'subtitle' => 'Centralisez les échanges avec l’équipe administrative',
-            ])
-        </div>
+
         <div class="chat-container">
             <!-- Sidebar - Liste des  -->
             <div class="chat-sidebar">

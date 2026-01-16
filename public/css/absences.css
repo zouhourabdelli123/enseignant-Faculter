@@ -816,78 +816,7 @@
     color: var(--text-primary);
 }
 
-/* DATATABLE CUSTOMIZATION */
-#attendanceTable_wrapper {
-    width: 100%;
-}
 
-#attendanceTable_wrapper .dataTables_length {
-    margin-bottom: 1rem;
-}
-
-#attendanceTable_wrapper .dataTables_length select {
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.5rem 2rem 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    margin: 0 0.5rem;
-    background: white;
-    cursor: pointer;
-}
-
-#attendanceTable_wrapper .dataTables_filter {
-    margin-bottom: 1rem;
-}
-
-#attendanceTable_wrapper .dataTables_filter input {
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    margin-left: 0.5rem;
-    width: 250px;
-}
-
-#attendanceTable_wrapper .dataTables_filter input:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(91, 108, 246, 0.1);
-}
-
-#attendanceTable {
-    width: 100% !important;
-    border-collapse: separate !important;
-    border-spacing: 0 !important;
-}
-
-#attendanceTable thead th {
-    background: var(--background);
-    color: var(--text-secondary);
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.6875rem;
-    letter-spacing: 0.05em;
-    padding: 0.875rem 1rem !important;
-    border: none !important;
-    border-bottom: 2px solid var(--border) !important;
-}
-
-#attendanceTable tbody td {
-    padding: 1rem !important;
-    vertical-align: middle;
-    color: var(--text-primary);
-    font-size: 0.875rem;
-    border: none !important;
-    border-bottom: 1px solid var(--border) !important;
-}
-
-#attendanceTable tbody tr:last-child td {
-    border-bottom: none !important;
-}
-
-#attendanceTable tbody tr:hover {
-    background: #fafbfc !important;
-}
 
 /* STUDENT CELL */
 .student-cell {
@@ -1000,54 +929,7 @@
     color: var(--warning);
 }
 
-/* DATATABLE PAGINATION */
-.dataTables_wrapper .dataTables_paginate {
-    margin-top: 1.25rem;
-}
 
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    padding: 0.5rem 0.75rem !important;
-    margin: 0 0.125rem !important;
-    border-radius: 6px !important;
-    border: 1px solid var(--border) !important;
-    background: var(--surface) !important;
-    color: var(--text-primary) !important;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    background: var(--primary) !important;
-    border-color: var(--primary) !important;
-    color: white !important;
-}
-
-.dataTables_wrapper
-    .dataTables_paginate
-    .paginate_button:hover:not(.current):not(.disabled) {
-    background: var(--background) !important;
-    border-color: var(--primary) !important;
-    color: var(--text-primary) !important;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
-    opacity: 0.5;
-    cursor: not-allowed !important;
-}
-
-.dataTables_wrapper .dataTables_info {
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    padding-top: 1rem;
-}
-
-/* SORTING ICONS */
-#attendanceTable thead th.sorting:before,
-#attendanceTable thead th.sorting:after,
-#attendanceTable thead th.sorting_asc:before,
-#attendanceTable thead th.sorting_asc:after,
-#attendanceTable thead th.sorting_desc:before,
-#attendanceTable thead th.sorting_desc:after {
-    color: var(--text-muted) !important;
-}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -1071,9 +953,4 @@
         padding: 1rem;
     }
 
-    #attendanceTable_wrapper .dataTables_filter input {
-        width: 100%;
-        margin-top: 0.5rem;
-        margin-left: 0;
-    }
 }

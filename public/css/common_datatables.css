@@ -4,6 +4,20 @@
    ==================================== */
 
 /* ====================================
+   BASE THEME TOKENS
+   ==================================== */
+:root {
+    --dt-surface: #ffffff;
+    --dt-surface-muted: #f7fafc;
+    --dt-border: #e4ebf3;
+    --dt-text: #1f2937;
+    --dt-muted: #6b7280;
+    --dt-accent: #0c5eb1;
+    --dt-accent-soft: rgba(12, 94, 177, 0.12);
+    --dt-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* ====================================
    CARTES DE TABLE (Tables communes)
    ==================================== */
 .table-card {
@@ -45,29 +59,97 @@
 /* ====================================
    DATATABLES - STYLES GÉNÉRAUX
    ==================================== */
+.dataTables_wrapper {
+    background: var(--dt-surface);
+    border: 1px solid var(--dt-border);
+    border-radius: 18px;
+    padding: 1.25rem 1.25rem 0.75rem;
+    box-shadow: var(--dt-shadow);
+}
+
+.dataTables_wrapper::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.table-card .dataTables_wrapper {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+    color: var(--dt-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dataTables_wrapper .dataTables_length {
+    justify-content: flex-start;
+    float: left;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    justify-content: flex-end;
+    float: right;
+    text-align: right;
+}
+
+.dataTables_wrapper .dataTables_filter label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+    background: var(--dt-surface-muted);
+    border: 1px solid var(--dt-border);
+    border-radius: 10px;
+    padding: 0.45rem 0.75rem;
+    color: var(--dt-text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus,
+.dataTables_wrapper .dataTables_length select:focus {
+    outline: none;
+    border-color: var(--dt-accent);
+    box-shadow: 0 0 0 3px var(--dt-accent-soft);
+}
+
 table.dataTable {
     border-collapse: collapse !important;
     border-spacing: 0 !important;
     width: 100% !important;
     border: none !important;
+    border-radius: 14px;
+    overflow: hidden;
 }
 
 table.dataTable thead th {
-    background-color: #f8f9fa !important;
-    color: #6c757d !important;
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+    color: var(--dt-muted) !important;
     font-weight: 600 !important;
     text-transform: uppercase;
     font-size: 0.75rem;
     letter-spacing: 0.5px;
-    border-bottom: 2px solid #eef2f6 !important;
+    border-bottom: 2px solid var(--dt-border) !important;
     padding: 1rem !important;
 }
 
 table.dataTable tbody td {
     padding: 1rem !important;
     vertical-align: middle;
-    border-bottom: 1px solid #f8f9fa !important;
-    color: #343a40;
+    border-bottom: 1px solid var(--dt-border) !important;
+    color: var(--dt-text);
     font-size: 0.9rem;
 }
 
@@ -76,7 +158,15 @@ table.dataTable tbody tr {
 }
 
 table.dataTable tbody tr:hover {
-    background-color: #fafdff !important;
+    background-color: #f4f9ff !important;
+}
+
+table.dataTable tbody tr:nth-child(even) {
+    background-color: #fbfdff;
+}
+
+table.dataTable.no-footer {
+    border-bottom: none !important;
 }
 
 /* Tables spécifiques */
@@ -85,6 +175,29 @@ table.dataTable tbody tr:hover {
 }
 
 /* Pagination DataTables */
+.dataTables_wrapper .dataTables_info {
+    color: var(--dt-muted);
+    font-size: 0.85rem;
+    padding-top: 0.5rem;
+    float: left;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    padding-top: 0.5rem;
+    float: right;
+    text-align: right;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border: 1px solid var(--dt-border) !important;
+    border-radius: 10px !important;
+    padding: 0.35rem 0.7rem !important;
+    margin: 0 0.15rem !important;
+    color: var(--dt-muted) !important;
+    background: var(--dt-surface-muted) !important;
+    transition: all 0.2s ease;
+}
+
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
     background: #0c5eb1 !important;
     color: white !important;
@@ -95,20 +208,21 @@ table.dataTable tbody tr:hover {
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current) {
     background: #e6f2ff !important;
     color: #0c5eb1 !important;
-    border: none !important;
-    border-radius: 50px !important;
+    border-color: transparent !important;
 }
 
 .dataTables_wrapper .dataTables_length select,
 .dataTables_wrapper .dataTables_filter input {
-    border: 1px solid #eef2f6;
-    border-radius: 6px;
-    padding: 6px 12px;
+    background: var(--dt-surface-muted);
+    border: 1px solid var(--dt-border);
+    border-radius: 10px;
+    padding: 0.45rem 0.75rem;
+    color: var(--dt-text);
 }
 
 .dataTables_wrapper .dataTables_filter input:focus {
     outline: none;
-    border-color: #0c5eb1;
+    border-color: var(--dt-accent);
 }
 
 /* ====================================

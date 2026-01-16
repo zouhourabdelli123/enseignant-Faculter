@@ -4,11 +4,14 @@
     <link href="{{ asset('css/common_datatables.css') }}" rel="stylesheet">
 
     <div class="page-container">
-   <div class="header-text">
-            <h2 class="page-title">Historique des présences des étudiants</h2>
-            <p class="page-subtitle">le 2025-09-15 08:30:00</p>
-        </div>
 
+        <div class="header-section">
+            <div class="header-text">
+                <h2 class="page-title">Historique des présences des étudiants</h2>
+                <p class="page-subtitle">le 2025-09-15 08:30:00</p>
+            </div>
+      
+        </div>
         <div class="table-card">
             <table id="etudiantsTable" class="display" style="width:100%">
                 <thead>

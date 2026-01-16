@@ -6,18 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('evalTypeTitle').textContent = evalType;
     }
 
-    // Initialisation DataTables
-    $('#notesEntryTable').DataTable({
-        paging: true,
-        searching: true,
-        info: true,
-        lengthChange: true, // Permettre de changer le nombre d'éléments par page
-        pageLength: 10,
-        language: {
-            url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json'
-        }
-    });
-
     updateStats();
 });
 
