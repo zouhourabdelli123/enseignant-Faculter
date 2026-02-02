@@ -11,9 +11,9 @@
         </div>
         <div class="date-display">
             <i class="fas fa-calendar-alt"></i>
-            <span id="current-date">Lundi 15 Janvier 2024</span>
+            <span id="current-date">{{ \Carbon\Carbon::now()->locale('fr')->translatedFormat('l d F Y') }}</span>
             <i class="fas fa-clock" style="margin-left: 0.5rem;"></i>
-            <span id="current-time">10:30</span>
+            <span id="current-time">{{ \Carbon\Carbon::now()->format('H:i') }}</span>
         </div>
     </div>
     <div class="header-right">
@@ -24,8 +24,7 @@
         <div class="user-profile" id="userProfile">
             <div class="user-avatar">AB</div>
             <div class="user-info">
-                <h4>Pr. Ahmed Ben Salah</h4>
-                <p>Département Informatique</p>
+                <h4>M(me).{{auth()->user()->nom}}</h4>
             </div>
             <i class="fas fa-chevron-down" style="color: var(--text-gray); font-size: 0.8rem;"></i>
 
@@ -34,8 +33,8 @@
                 <div class="dropdown-header">
                     <div class="dropdown-avatar">AB</div>
                     <div>
-                        <p class="dropdown-name">Pr. Ahmed Ben Salah</p>
-                        <p class="dropdown-email">ahmed.bensalah@iit.tn</p>
+                        <p class="dropdown-name">M(me).{{auth()->user()->nom}}</p>
+                        <p class="dropdown-email">M(me).{{auth()->user()->email}}</p>
                     </div>
                 </div>
                 <div class="dropdown-divider"></div>

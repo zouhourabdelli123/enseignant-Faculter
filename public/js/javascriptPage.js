@@ -77,7 +77,7 @@
         const notificationBell = document.querySelector('.notification-bell');
         const notificationBadge = document.querySelector('.notification-badge');
 
-        notificationBell.addEventListener('click', function() {
+       /*  notificationBell.addEventListener('click', function() {
             if (notificationBadge.textContent !== '0') {
                 // Animation de suppression
                 notificationBadge.style.transform = 'scale(0) rotate(45deg)';
@@ -93,7 +93,7 @@
                 // Notification
                 showToast('Toutes les notifications ont été marquées comme lues', 'info');
             }
-        });
+        }); */
 
         // Fonction pour afficher un toast amélioré
         function showToast(message, type = 'info') {

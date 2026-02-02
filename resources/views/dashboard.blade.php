@@ -4,8 +4,8 @@
             <section class="welcome-section fade-in">
                 <div class="welcome-header">
                     <div class="welcome-text">
-                        <h2>Bonjour, Professeur Ahmed 👋</h2>
-                        <p>Bienvenue sur votre espace personnel. Voici un aperçu de votre journée et des activités à venir. Votre prochain cours commence dans <strong id="nextCourseTimer">1h 30min</strong>.</p>
+                        <h2>Bonjour, Professeur {{auth()->user()->nom}} 👋</h2>
+                        <p>Bienvenue sur votre espace personnel. Voici un aperçu de votre journée et des activités à venir. </p>
                     </div>
                     <div class="welcome-icon">
                         <i class="fas fa-chalkboard-teacher"></i>
