@@ -31,9 +31,11 @@
             </li>
 
             <li>
-                <a href="{{ route('absences.index') }}" class="{{ request()->routeIs('absences.*') ? 'active' : '' }}">
+
+                <a href="{{ route('affiche_liste_classe') }}"
+                    class="{{ request()->routeIs('absences.*') ? 'active' : '' }}">
                     <i class="fas fa-user-clock"></i>
-                    <span>Gestion des Absences</span>
+                    <span>Gestion des Absences </span>
                 </a>
             </li>
 
@@ -64,7 +66,7 @@
         <p class="nav-title">Gestion</p>
 
         <ul class="nav-links">
-     
+
             <li>
                 <a href="{{ route('message.index') }}" class="{{ request()->routeIs('message.*') ? 'active' : '' }}">
                     <i class="fas fa-comment-dots"></i>

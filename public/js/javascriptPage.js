@@ -150,7 +150,7 @@
         }
 
         // Gestionnaire de thème sombre
-        const themeToggle = document.getElementById('themeToggle');
+        /* const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
             const icon = this.querySelector('i');
@@ -161,7 +161,7 @@
                 icon.className = 'fas fa-moon';
                 showToast('Mode clair activé', 'info');
             }
-        });
+        }); */
 
         // Animation au chargement améliorée
         document.addEventListener('DOMContentLoaded', function() {
@@ -250,17 +250,17 @@
             });
 
             // Actions flottantes
-            document.getElementById('quickNote').addEventListener('click', function() {
+           /*  document.getElementById('quickNote').addEventListener('click', function() {
                 showToast('Créer une nouvelle note rapide', 'info');
             });
-
-            document.getElementById('quickMail').addEventListener('click', function() {
+ */
+          /*   document.getElementById('quickMail').addEventListener('click', function() {
                 showToast('Ouvrir l\'éditeur de message', 'info');
             });
 
             document.getElementById('quickMeeting').addEventListener('click', function() {
                 showToast('Planifier une nouvelle réunion', 'info');
-            });
+            }); */
 
             // Animation du logo au chargement
             const logoIcon = document.querySelector('.logo-icon');
@@ -273,9 +273,9 @@
         });
 
         // Gestionnaire de clic pour le logo
-        document.getElementById('logoHeader').addEventListener('click', function() {
+       /*  document.getElementById('logoHeader').addEventListener('click', function() {
             showToast('Retour à l\'accueil', 'info');
-        });
+        }); */
 
         // Gestionnaire de clic pour le profil utilisateur - Dropdown toggle
         document.addEventListener('DOMContentLoaded', function() {

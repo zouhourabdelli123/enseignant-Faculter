@@ -17,100 +17,12 @@
             </button>
         </div>
 
-        <div class="classes-grid" id="classesGrid">
-            @php
-                // Exemple de données - À remplacer par vos vraies données
-                $classes = [
-                    [
-                        'group' => 1,
-                        'level' => 2,
-                        'name' => 'Administration réseaux et systèmes d\'informations',
-                        'subtitle' => 'Développement des systèmes Communicants',
-                    ],
-                    [
-                        'group' => 2,
-                        'level' => 2,
-                        'name' => 'Génie logiciel et informatique décisionnelle',
-                        'subtitle' => 'Développement des systèmes Communicants',
-                    ],
-                    [
-                        'group' => 3,
-                        'level' => 2,
-                        'name' => 'Génie logiciel et informatique décisionnelle',
-                        'subtitle' => 'Développement des systèmes Communicants',
-                    ],
-                    [
-                        'group' => 4,
-                        'level' => 2,
-                        'name' => 'Génie logiciel et informatique décisionnelle',
-                        'subtitle' => 'Développement des systèmes Communicants',
-                    ],
-                    [
-                        'group' => 5,
-                        'level' => 2,
-                        'name' => 'Génie logiciel et informatique décisionnelle',
-                        'subtitle' => 'Développement des systèmes Communicants',
-                    ],
-                    [
-                        'group' => 6,
-                        'level' => 2,
-                        'name' => 'Génie logiciel et informatique décisionnelle',
-                        'subtitle' => 'Développement des systèmes Communicants',
-                    ],
-                    [
-                        'group' => 7,
-                        'level' => 2,
-                        'name' => 'Génie logiciel et informatique décisionnelle',
-                        'subtitle' => 'Développement des systèmes Communicants',
-                    ],
-                    [
-                        'group' => 8,
-                        'level' => 2,
-                        'name' => 'Génie logiciel et informatique décisionnelle',
-                        'subtitle' => 'Développement des systèmes Communicants',
-                    ],
-                ];
-            @endphp
+        <div class="classes-grid" id="classesContainer">
 
-            @foreach ($classes as $class)
-                <div class="class-card"
-                    onclick="openSessionModal({{ $class['group'] }}, '{{ $class['name'] }}', {{ $class['level'] }})">
-                    <div class="card-header">
-                        <div class="card-badge">G{{ $class['group'] }}</div>
-                        <div class="card-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="card-content">
-                        <h3 class="card-title">{{ $class['name'] }}</h3>
-                        <p class="card-subtitle">{{ $class['subtitle'] }}</p>
-                    </div>
-
-                    <div class="card-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Niveau</span>
-                            <span class="meta-value">{{ $class['level'] }}</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Groupe</span>
-                            <span class="meta-value">{{ $class['group'] }}</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Semestre</span>
-                            <span class="meta-value" id="semesterValue{{ $class['group'] }}">-</span>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
         </div>
     </div>
 
-    <div id="semesterModal" class="modal-overlay" onclick="closeModalOnOutside(event, 'semesterModal')">
+    <div id="semesterModal" class="modal-overlay">
         <div class="modal-box" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeSemesterModal()">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -144,7 +56,7 @@
         </div>
     </div>
 
-    <div id="sessionModal" class="modal-overlay" onclick="closeModalOnOutside(event, 'sessionModal')">
+    <div id="sessionModal" class="modal-overlay">
         <div class="modal-box modal-box-large" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeSessionModal()">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -167,8 +79,11 @@
                 <p class="modal-subtitle">Remplissez les informations de la séance</p>
             </div>
 
-            <form id="sessionForm">
+            <form method="post" action="{{ route('affiche_presences_etudiants') }}" id='sessionForm'>
+                @csrf
                 <div class="form-grid">
+                    <div id="danger-alert" class="alert alert-danger alert-exam" style="display: none;">
+                    </div>
                     <div class="form-group">
                         <label for="sessionDate">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -178,7 +93,7 @@
                             </svg>
                             Date et heure
                         </label>
-                        <input type="datetime-local" id="sessionDate" class="form-input" required>
+                        <input type="datetime-local" id="sessionDate" name="date" class="form-input" required>
                     </div>
 
                     <div class="form-group">
@@ -190,7 +105,7 @@
                             </svg>
                             Durée de la séance
                         </label>
-                        <select id="sessionDuration" class="form-select" required>
+                        <select id="sessionDuration" name="duree" class="form-select" required>
                             <option value="">Sélectionner la durée...</option>
                             <option value="1">1 heure</option>
                             <option value="1.5">1h30</option>
@@ -209,36 +124,35 @@
                             </svg>
                             Type de séance
                         </label>
-                        <select id="sessionType" class="form-select" required>
+                        <select id="sessionType" name="type_cours" class="form-select" required>
                             <option value="">Sélectionner le type...</option>
-                            <option value="cours">📚 Cours magistral</option>
-                            <option value="td">✏️ Travaux dirigés (TD)</option>
-                            <option value="tp">💻 Travaux pratiques (TP)</option>
+                            <option value="Cours magistral">📚 Cours magistral</option>
+                            <option value="Travaux dirigés (TD)">✏️ Travaux dirigés (TD)</option>
+                            <option value="Travaux pratiques (TP)">💻 Travaux pratiques (TP)</option>
+                            <option value="Surveillance">👀 Surveillance</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="sessionRoom">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                <polyline points="9 22 9 12 15 12 15 22" />
-                            </svg>
-                            Salle
-                        </label>
-                        <select id="sessionRoom" class="form-select" required>
-                            <option value="">Sélectionner la salle...</option>
-                            <option value="principale">🏛️ Salle principale</option>
-                            <option value="salle-1">🚪 Salle 1</option>
-                            <option value="salle-2">🚪 Salle 2</option>
-                            <option value="labo-1">🔬 Laboratoire 1</option>
-                            <option value="labo-2">🔬 Laboratoire 2</option>
+                        <label for="sessionRoom">Type de cours</label>
+                        <select id="type_seance" name="type_seance" class="form-select" required>
+                            <option value="">Sélectionner le type ...</option>
+                            <option value="Principale">🏛️ Principale</option>
+                            <option value="Rattrapage">🎯 Rattrapage</option>
                         </select>
                     </div>
+
                 </div>
 
+                <input name="specialite" id="specialite" hidden>
+                <input name="niveau" id="niveau" hidden>
+                <input name="groupe" id="groupe" hidden>
+                <input name="matiere" id="matiere" hidden>
+                <input name="semester" id="semester" hidden>
+
+
                 <div class="modal-actions">
-                 
+
                     <button type="button" class="btn btn-secondary" onclick="closeSessionModal()">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2.5" stroke-linecap="round">
@@ -246,7 +160,7 @@
                         </svg>
                         Annuler
                     </button>
-                       <a type="button" class="btn btn-primary" onclick="validateSession()" href="{{ route('affichage.index') }}">
+                    <a type="button" class="btn btn-primary" onclick="validateSession()">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="20 6 9 17 4 12" />
@@ -257,6 +171,8 @@
             </form>
         </div>
     </div>
-    <script src="{{ asset('js/script_abcences.js') }}" ></script>
-
+    <script src="{{ asset('js/script_liste_classe.js') }}"></script>
+    <script>
+        const filterClasseRoute = "{{ route('affiche_liste_classe_par_semester') }}";
+    </script>
 @endsection
