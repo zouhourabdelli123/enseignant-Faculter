@@ -68,7 +68,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('documents.index') }}"
+                <a href="{{ route('afficher_liste_documents') }}"
                     class="{{ request()->routeIs('documents.*') ? 'active' : '' }}">
                     <i class="fas fa-folder-open"></i>
                     <span>Documents</span>

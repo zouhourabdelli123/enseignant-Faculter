@@ -27,11 +27,17 @@ class DemandesController extends Controller
 
         //svg document dans dossier files in partie admin
 
+        $file = null;
+        if ($request->hasFile('document')) {
+            $file = $request->file('document');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('files'), $fileName);
+        }
         Demandes::create([
             "titre" => $request->titre,
             "message" => $request->contenue,
             "id_enseignant" => auth()->user()->id_enseignant,
-            "document" =>  $request->file('document')?->getClientOriginalName(),
+            "document" =>  $file,
         ]);
 
         return redirect()->route('afficher_liste_demandes')->with('ajout', 1);

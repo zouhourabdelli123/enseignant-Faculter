@@ -16,7 +16,7 @@
             <div class="table-card-header">
                 <h3 class="table-title">Liste de demandes</h3>
             </div>
-            <a class="semester-selector-btn" href="{{ route('afficher_ajout_demandes') }}" >
+            <a class="semester-selector-btn" href="{{ route('afficher_ajout_demandes') }}">
                 <span id="currentSemesterDisplay">Ajouter une demande</span>
             </a>
 
@@ -27,6 +27,7 @@
                         <th>Contenue</th>
                         <th>Message Admin</th>
                         <th>État</th>
+                        <th>ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +53,17 @@
                                     <span class="status-badge completed">Acceptée</span>
                                 @elseif ($demande->statut == 2)
                                     <span class="status-badge refused">Refusée</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($demande->document)
+                                    <a class="btn btn-primary"
+                                        href="{{ route('telecharger_document_bureau', ['name_document' => $demande->document]) }}">
+                                        <i class="fas fa-download"></i>
+                                        Télécharger
+                                    </a>
+                                @else
+                                    Pas d'ACTION
                                 @endif
                             </td>
                         </tr>

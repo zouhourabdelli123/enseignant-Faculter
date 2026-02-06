@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AbsenceController;
 use App\Http\Controllers\DemandesController;
 use App\Http\Controllers\NotesController;
+use App\Http\Controllers\DocumentsDemandesController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -23,8 +24,6 @@ Route::middleware('auth')->group(function () {
 
 route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/message', [AbsenceController::class, 'message'])->name('message.index');
-    Route::get('/documents', [AbsenceController::class, 'documents'])->name('documents.index');
-    Route::get('/documents/add', [AbsenceController::class, 'add_document'])->name('documents.add');
     Route::get('/historique-presences', [AbsenceController::class, 'historique_presences'])->name('historique_presences.index');
     Route::get('/afficher-presences-etudiants/{id}', [AbsenceController::class, 'afficher_presences_etudiants'])->name('afficher_presences_etudiants');
 });
@@ -48,5 +47,11 @@ route::middleware(['auth', 'verified'])->group(function () {
     Route::post('liste_etudiants', [NotesController::class, 'listeNotes'])->name('affiche_liste_etudiants');
     Route::post('affecter_notes', [NotesController::class, 'affecterNotes'])->name('affecter_notes_etudiants');
 
+    /* demandes */
+    Route::get('liste_documents', [DocumentsDemandesController::class, 'affichePagesDemandes'])->name('afficher_liste_documents');
+    Route::get('ajout_demande_document', [DocumentsDemandesController::class, 'ajoutDemandePage'])->name('page_ajout_demande_document');
+    Route::post('ajout_document', [DocumentsDemandesController::class, 'ajoutDemandeDocument'])->name('ajout_demande_document');
+
+    Route::get('telecharger_document/{name_document}', [DocumentsDemandesController::class, 'downloadPdf'])->name('telecharger_document_bureau');
 });
 require __DIR__ . '/auth.php';
