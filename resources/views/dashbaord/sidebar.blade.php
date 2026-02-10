@@ -62,6 +62,9 @@
                 <a href="{{ route('message.index') }}" class="{{ request()->routeIs('message.*') ? 'active' : '' }}">
                     <i class="fas fa-comment-dots"></i>
                     <span>Messagerie</span>
+                    @if (!empty($messageUnreadCount) && $messageUnreadCount > 0)
+                        <span class="nav-badge">{{ $messageUnreadCount }}</span>
+                    @endif
                 </a>
             </li>
             <li>

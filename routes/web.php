@@ -6,6 +6,7 @@ use App\Http\Controllers\DemandesController;
 use App\Http\Controllers\NotesController;
 use App\Http\Controllers\DocumentsDemandesController;
 use App\Http\Controllers\PresancesController;
+use App\Http\Controllers\MessageController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,10 @@ Route::middleware('auth')->group(function () {
 });
 
 route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/message', [AbsenceController::class, 'message'])->name('message.index');
+    Route::get('/message', [MessageController::class, 'index'])->name('message.index');
+    Route::get('/message/messages', [MessageController::class, 'messages'])->name('message.messages');
+    Route::post('/message/messages', [MessageController::class, 'send'])->name('message.send');
+    Route::post('/message/read', [MessageController::class, 'markRead'])->name('message.read');
 });
 
 route::middleware(['auth', 'verified'])->group(function () {
