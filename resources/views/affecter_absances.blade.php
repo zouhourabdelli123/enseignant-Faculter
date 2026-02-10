@@ -128,7 +128,10 @@
     </form>
 </div>
 
+<link rel="stylesheet" href="{{ asset('css/custom_datatables.css') }}">
 <link rel="stylesheet" href="{{ asset('css/affecter_absances.css') }}">
+
+<script src="{{ asset('js/custom_datatables.js') }}"></script>
 <script src="{{ asset('js/script_affecter_absances.js') }}"></script>
 <input id="validez" hidden value="{{ $validez }}">
 
