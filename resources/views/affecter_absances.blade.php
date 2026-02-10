@@ -6,57 +6,65 @@
     <div class="header-section">
         <div class="header-text">
             <h2 class="page-title">Feuille de Présence</h2>
-            <p class="page-subtitle">Gérez les présences de votre classe</p>
+            <p class="page-subtitle">Gérez les présences de votre classe pour cette séance</p>
+        </div>
+        <div class="validation-area">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-check"></i> Valider la présence
+            </button>
         </div>
     </div>
 
     <!-- SESSION INFO -->
     <div class="session-info-card">
-        <div class="session-header">
-            <div class="session-icon-wrapper">
-                <div class="session-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                        <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                    </svg>
+        <div class="session-row">
+            <div class="session-main">
+                <div class="session-icon-wrapper">
+                    <div class="session-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="session-content">
+                    <div class="session-top-badges">
+                        <span class="session-type-badge">{{ $type_cours }}</span>
+                        <span class="session-group-badge">Groupe {{ $groupe }}</span>
+                    </div>
+                    <h3 class="session-title">{{ $nom_specialite }}</h3>
+                    <p class="session-subtitle">{{ $nom_matiere }}</p>
                 </div>
             </div>
-            <div class="session-content">
-                <span class="session-type-badge">{{ $type_cours }}</span>
-                <h3 class="session-title">{{ $nom_specialite }}</h3>
-                <p class="session-subtitle">{{ $nom_matiere }}</p>
-            </div>
-            <div class="session-badge">G{{ $groupe }}</div>
-        </div>
 
-        <div class="session-details-grid">
-            <div class="detail-item">
-                <span class="detail-icon"><i class="fas fa-layer-group"></i></span>
-                <div>
-                    <span class="detail-label">Niveau</span>
-                    <span class="detail-value">{{ $nom_niveau }}</span>
+            <div class="session-details-grid">
+                <div class="detail-item">
+                    <span class="detail-icon"><i class="fas fa-layer-group"></i></span>
+                    <div class="detail-text">
+                        <span class="detail-label">Niveau</span>
+                        <span class="detail-value">{{ $nom_niveau }}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="detail-item">
-                <span class="detail-icon"><i class="fas fa-calendar-alt"></i></span>
-                <div>
-                    <span class="detail-label">Semestre</span>
-                    <span class="detail-value">{{ $semester }}</span>
+                <div class="detail-item">
+                    <span class="detail-icon"><i class="fas fa-calendar-alt"></i></span>
+                    <div class="detail-text">
+                        <span class="detail-label">Semestre</span>
+                        <span class="detail-value">{{ $semester }}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="detail-item">
-                <span class="detail-icon"><i class="fas fa-clock"></i></span>
-                <div>
-                    <span class="detail-label">Horaire</span>
-                    <span class="detail-value">{{ $date_debut }}</span>
+                <div class="detail-item">
+                    <span class="detail-icon"><i class="fas fa-clock"></i></span>
+                    <div class="detail-text">
+                        <span class="detail-label">Horaire</span>
+                        <span class="detail-value">{{ $date_debut }}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="detail-item">
-                <span class="detail-icon"><i class="fas fa-map-marker-alt"></i></span>
-                <div>
-                    <span class="detail-label">Type Séance</span>
-                    <span class="detail-value">{{ $type_seance }}</span>
+                <div class="detail-item">
+                    <span class="detail-icon"><i class="fas fa-map-marker-alt"></i></span>
+                    <div class="detail-text">
+                        <span class="detail-label">Type Séance</span>
+                        <span class="detail-value">{{ $type_seance }}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -113,18 +121,15 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="validation-area">
-                <button class="btn btn-primary">
-                    Validez
-                </button>
-            </div>
+
+
+
         </div>
     </form>
 </div>
 
-<input id="validez" hidden value="{{ $validez }}">
+<link rel="stylesheet" href="{{ asset('css/affecter_absances.css') }}">
 <script src="{{ asset('js/script_affecter_absances.js') }}"></script>
-
-
+<input id="validez" hidden value="{{ $validez }}">
 
 @endsection
