@@ -73,7 +73,7 @@
 </div>
 
 <script>
-    const notesIndexUrl = "{{ route('notes.index') }}";
+    const notesIndexUrl = "{{ route('affiche_liste_etudiants') }}";
 </script>
 
 @endsection
