@@ -1,7 +1,7 @@
 @extends('dashbaord.main')
 
 @section('content')
-
+<link rel="stylesheet" href="{{ asset('css/custom_datatables.css') }}">
 
 <div class="page-container">
     <!-- HEADER -->
@@ -10,25 +10,24 @@
             <h2 class="page-title">Liste des documents</h2>
             <p class="page-subtitle">Gérez vos documents administratifs et académiques</p>
         </div>
-        <a href="{{ route('page_ajout_demande_document') }}" class="btn btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <a href="{{ route('page_ajout_demande_document') }}" class="header-action-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 5v14M5 12h14" />
             </svg>
-            Ajouter
+            Ajouter un document
         </a>
     </div>
     <div class="table-card documents-card">
         <div class="table-card-header">
-            <h3 class="table-title">Documents</h3>
-            <span class="table-hint">Historique des demandes</span>
+            <h3 class="table-title">Historique des demandes</h3>
         </div>
-        <table id="documentsTable" class="documents-table" style="width:100%">
+        <table id="suiviTable" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th>DATE</th>
                     <th>DOCUMENT</th>
                     <th>STATUT</th>
-                    <th>ACTION</th>
+                    <th class="no-sort">ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,7 +45,7 @@
                         @endif
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('telecharger_document_bureau', ['name_document' => $document->document]) }}">
+                        <a class="btn btn-primary btn-sm" href="{{ route('telecharger_document_bureau', ['name_document' => $document->document]) }}">
                             <i class="fas fa-download"></i>
                             Télécharger
                         </a>
@@ -59,5 +58,6 @@
 </div>
 <input id="ajout" hidden value="{{ session('ajout') }}">
 
+<script src="{{ asset('js/custom_datatables.js') }}"></script>
 <script src="{{ asset('js/documents.js') }}"></script>
 @endsection

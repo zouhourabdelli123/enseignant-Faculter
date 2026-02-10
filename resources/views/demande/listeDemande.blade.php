@@ -29,8 +29,8 @@
                     <th>Titre</th>
                     <th>Contenue</th>
                     <th>Message Admin</th>
-                    <th>État</th>
-                    <th>ACTION</th>
+                    <th class="no-sort">État</th>
+                    <th class="no-sort">ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,7 +62,7 @@
                     </td>
                     <td>
                         @if ($demande->document)
-                        <a class="btn btn-primary"
+                        <a class="btn btn-primary btn-sm"
                             href="{{ route('telecharger_document_bureau', ['name_document' => $demande->document]) }}">
                             <i class="fas fa-download"></i>
                             Télécharger

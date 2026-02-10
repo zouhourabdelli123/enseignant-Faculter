@@ -85,8 +85,8 @@
                         <th>N°</th>
                         <th>Prénom</th>
                         <th>Nom</th>
-                        <th>Présent</th>
-                        <th>Historiques</th>
+                        <th class="no-sort">Présent</th>
+                        <th class="no-sort">Historiques</th>
                     </tr>
                 </thead>
                 <tbody>

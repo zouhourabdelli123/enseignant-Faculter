@@ -40,6 +40,13 @@
                 <div class="file-upload-wrapper">
                     <input type="file" id="document" name="document" class="file-upload-input" required
                         accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <span class="upload-text">Cliquez ou glissez le fichier ici</span>
+                        <span class="upload-hint">PDF, DOC, DOCX, JPG, PNG (Max 5Mo)</span>
+                    </div>
+
                     <div id="fileName" class="file-name" style="display: none;">
                         <i class="fas fa-file-alt"></i>
                         <span id="fileNameText">Aucun fichier sélectionné</span>

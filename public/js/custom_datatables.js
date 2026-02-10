@@ -22,8 +22,8 @@ $(document).ready(function () {
         pageLength: pageLength,
         columnDefs: [{
                 orderable: false,
-                targets: [3, 4]
-            } // Generic sort disable for typical action/status columns
+                targets: 'no-sort'
+            } 
         ]
     });
 });
